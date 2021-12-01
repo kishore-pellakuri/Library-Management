@@ -1,0 +1,86 @@
+<div class="form">
+    <h1 class="display-6 text-center">
+        <u> Library Management</u>
+    </h1>
+</div>
+<br>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa fa-plus-circle"></i> New Register
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">User</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                    <input type="hidden" name="ID" #ID="ngModel" [(ngModel)]="service.formData.ID">
+                    <div class="form-group">
+                        <label>User Name:</label>
+                        <input name="UserName" #UserName="ngModel" [(ngModel)]="service.formData.UserName"
+                            class="form-control" required>
+                        <div class="validation-error" *ngIf="UserName.invalid && UserName.touched">*This field
+                            is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Age:</label>
+                        <input name="Age" #Age="ngModel" [(ngModel)]="service.formData.Age" class="form-control"
+                            required>
+                    </div>
+                    <div class="form-group ">
+                        <label>Mobile Number:</label>
+                        <input name="MobileNumber" #MobileNumber="ngModel" [(ngModel)]="service.formData.MobileNumber"
+                            class="form-control" required>
+                        <div class="validation-error" *ngIf="MobileNumber.invalid && MobileNumber.touched">*This
+                            field is
+                            required.
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>Place:</label>
+                        <input name="Place" #Place="ngModel" [(ngModel)]="service.formData.Place" class="form-control"
+                            required>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" [disabled]="form.invalid" class="btn btn-success">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<h6>
+    User Register:
+</h6>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th class="tbl">User Name</th>
+            <th class="tbl">Age</th>
+            <th class="tbl">Mobile Number</th>
+            <th class="tbl">Place</th>
+            <th class="tbl">Edit&Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of service.list">
+            <td class="tbl">{{user.UserName}}</td>
+            <td class="tbl">{{user.Age}}</td>
+            <td class="tbl">{{user.MobileNumber}}</td>
+            <td class="tbl">{{user.Place}}</td>
+            <td class="tbl" (click)="EditForm(user)">
+                <button class="btn btn-info btnSet" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                        class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-danger tbl " (click)="DeleteForm(user.ID)"><i class="fas fa-trash-alt"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,73 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa fa-plus-circle"></i> Add new Book
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                    <input type="hidden" name="BookID" #BookID="ngModel" [(ngModel)]="service.formData.BookID">
+                    <div class="form-group">
+                        <label>Book Title:</label>
+                        <input name="Title" #Title="ngModel" [(ngModel)]="service.formData.Title"
+                            class="form-control" required>
+                        <div class="validation-error" *ngIf="Title.invalid && Title.touched">*This field
+                            is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Author:</label>
+                        <input name="Author" #Author="ngModel" [(ngModel)]="service.formData.Author" class="form-control"
+                            required>
+                    </div>
+                    <div class="form-group ">
+                        <label>Year of Publication:</label>
+                        <input name="YearofPublication" #YearofPublication="ngModel" [(ngModel)]="service.formData.YearofPublication"
+                            class="form-control" required>
+                        <div class="validation-error" *ngIf="YearofPublication.invalid && YearofPublication.touched">*This
+                            field is
+                            required.
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" [disabled]="form.invalid" class="btn btn-success">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<h6>
+    Select Book:
+</h6>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th class="tbl">Title</th>
+            <th class="tbl">Author</th>
+            <th class="tbl">Year of Publication</th>
+            <th class="tbl">Edit&Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of service.list">
+            <td class="tbl">{{book.Title}}</td>
+            <td class="tbl">{{book.Author}}</td>
+            <td class="tbl">{{book.YearofPublication}}</td>
+            <td class="tbl" (click)="EditForm(book)">
+                <button class="btn btn-info btnSet" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                        class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-danger tbl " (click)="DeleteForm(book.BookID)"><i class="fas fa-trash-alt"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,60 @@
+h1 {
+    color: purple;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+}
+h6 {
+    color: brown;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+}
+table{
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid black;
+}
+thead{
+    border: 1px solid black;
+}
+input.ng-touched.ng-invalid{
+    border-color: #dc3545;
+}
+div.validation-error{
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+.fieldspace{
+    display: flex;
+}
+.fieldPadding{
+    padding-right: 20px;
+}
+.form-control {
+    display: block;
+    width: 65% !important;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1.5px solid #212127 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.tbl{
+    text-align: center;
+}
+.btnSet{
+    margin-right: 10px;
+}
