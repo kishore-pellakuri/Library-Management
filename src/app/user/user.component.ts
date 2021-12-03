@@ -1,9 +1,10 @@
+import { User } from './../Shared/user.model';
 import { BookComponent } from './../book/book.component';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { User } from '../Shared/user.model';
 import { UserService } from '../Shared/user.service';
+import { DOCUMENT } from '@angular/common'
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,7 @@ import { UserService } from '../Shared/user.service';
 export class UserComponent implements OnInit {
 
   constructor(public service: UserService, private toastr: ToastrService) { }
-  
+
   ngOnInit(): void {
     this.resetForm();
     this.service.getList();
@@ -60,5 +61,9 @@ export class UserComponent implements OnInit {
         this.service.getList();
       })
     }
+  }
+
+  filterForm() {
+    this.service.filtering();
   }
 }
